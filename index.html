@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday Raima Al-Durra Kashmiri 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Your original CSS here (unchanged) */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #fff1eb, #ace0f9);
+      color: #333;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .screen {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100vh;
+      padding: 2rem;
+      flex-direction: column;
+      transition: opacity 1s ease;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .screen.active {
+      display: flex;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.8rem;
+      color: #ff69b4;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .character {
+      margin: 1.5rem 0;
+      animation: popIn 1s ease, floatUpDown 4s ease-in-out infinite;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .character img {
+      width: 180px;
+      height: auto;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .friends-section img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 1rem;
+      border: 3px solid #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      animation: floatUpDown 5s ease-in-out infinite;
+    }
+
+    .friends-section .message {
+      max-width: 500px;
+      margin: 0 auto;
+      font-weight: 500;
+      color: #555;
+    }
+
+    #start-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    #start-screen h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #ff69b4;
+    }
+
+    #start-button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      background-color: #ff69b4;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+    }
+
+    #start-button:hover {
+      background-color: #ff4ea8;
+    }
+
+    #sparkle-container {
+      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      z-index: 2000;
+      display: none;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(circle at center, #fff8, #ff69b4);
+      filter: drop-shadow(0 0 3px #ff69b4);
+      border-radius: 50%;
+      opacity: 0.8;
+      pointer-events: none;
+      animation: sparkle-fall linear forwards;
+    }
+
+    @keyframes sparkle-fall {
+      0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) translateX(30px) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    #final-message {
+      position: fixed;
+      bottom: 3rem;
+      width: 100%;
+      text-align: center;
+      font-size: 1.8rem;
+      color: #ff69b4;
+      font-family: 'Pacifico', cursive;
+      user-select: none;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+      z-index: 2500;
+    }
+  </style>
+</head>
+<body>
+
+<div id="start-screen">
+  <h1>🎉 Tap to Start the Birthday Surprise 🎉</h1>
+  <button id="start-button" onclick="startExperience(event)">Start</button>
+</div>
+
+<audio id="bg-music" loop>
+  <source src="background-music.mp3" type="audio/mpeg" />
+</audio>
+
+<!-- Screens -->
+<div class="screen" id="screen1">
+  <h1>Welcome Raima Al-Durra Kashmiri 🎈</h1>
+  <p>Step into your magical cartoon world 🐰🎉</p>
+</div>
+
+<div class="screen" id="screen2">
+  <div class="character"><img src="BabyLooney1.png" /></div>
+  <h1>The Baby Looney Tunes Welcome You!</h1>
+  <p>You’re 21 now—let the fun begin! ✨</p>
+</div>
+
+<div class="screen" id="screen3">
+  <div class="character"><img src="Tom1.png" /></div>
+  <h1>Tom says...</h1>
+  <p>"She’s smart... but sometimes makes the same mistake again and again—like me with Jerry!" 😹</p>
+</div>
+
+<div class="screen" id="screen4">
+  <div class="character"><img src="Doraemon1.png" /></div>
+  <h1>Doraemon says...</h1>
+  <p>"She’s the kind of person I'd share my gadgets with. And I never do that." 🛸💙</p>
+</div>
+
+<div class="screen" id="screen5">
+  <div class="character"><img src="Shinchan1.png" /></div>
+  <h1>Shinchan says...</h1>
+  <p>"Naughty, but sweet... just like me! Ne ne ne~" 🍭</p>
+</div>
+
+<div class="screen" id="screen6">
+  <div class="character"><img src="Oggy1.png" /></div>
+  <h1>Oggy says...</h1>
+  <p>"Chill, clumsy, chaotic—and still the best. That’s Raima." 😺✨</p>
+</div>
+
+<div class="screen" id="screen7">
+  <h1>🎊 Now It’s Time for the Real Wishes! 🎊</h1>
+  <p>From the three musketeers in your life!</p>
+</div>
+
+<div class="screen" id="screen8">
+  <div class="friends-section">
+    <img src="Aayesha.jpg" />
+    <div class="message">
+      <h2>Aayesha</h2>
+      <p>You're the kind of sunshine the world needs, and I'm lucky to have you in my sky. Happy Birthday! 💖</p>
+    </div>
+  </div>
+</div>
+
+<div class="screen" id="screen9">
+  <div class="friends-section">
+    <img src="Sadique.jpg" />
+    <div class="message">
+      <h2>Sadique</h2>
+      <p>You're annoying. But like, the good kind. Like fries without ketchup. Still my friend. Happy Birthday, champ. 🎂</p>
+    </div>
+  </div>
+</div>
+
+<div class="screen" id="screen10">
+  <div class="friends-section">
+    <img src="Farhan.jpg" />
+    <div class="message">
+      <h2>Farhan</h2>
+      <p>I hope you never forget this day—because someone made something special for someone even more special. Happy Birthday, Raima. 🎉</p>
+    </div>
+  </div>
+</div>
+
+<div id="sparkle-container"></div>
+<div id="final-message">Once again, Happy Birthday Gedi Master 💖</div>
+
+<script>
+  let current = -1;
+  const screens = document.querySelectorAll(".screen");
+  const music = document.getElementById("bg-music");
+  const sparkleContainer = document.getElementById("sparkle-container");
+  const finalMessage = document.getElementById("final-message");
+  let sparkleInterval = null;
+  let screenTimer = null;
+
+  function startExperience(e) {
+    e.stopPropagation();
+    document.getElementById("start-screen").style.display = "none";
+    nextScreen();
+    music.play().catch(() => { /* auto-play blocked fallback */ });
+  }
+
+  function nextScreen() {
+    // Hide previous screen
+    if (current >= 0 && current < screens.length) {
+      screens[current].classList.remove("active");
+    }
+
+    current++;
+    if (current < screens.length) {
+      screens[current].classList.add("active");
+      // Schedule next screen after 6 seconds
+      screenTimer = setTimeout(nextScreen, 6000);
+    } else {
+      // End reached - stop timer and start sparkles
+      clearTimeout(screenTimer);
+      startSparkles();
+      showFinalMessage();
+    }
+  }
+
+  function createSparkle() {
+    const sparkle = document.createElement("div");
+    sparkle.classList.add("sparkle");
+    sparkle.style.left = Math.random() * window.innerWidth + "px";
+    sparkle.style.top = "-20px";
+    sparkle.style.animationDuration = (2 + Math.random() * 2) + "s";
+    sparkleContainer.appendChild(sparkle);
+    sparkle.addEventListener("animationend", () => {
+      sparkle.remove();
+    });
+  }
+
+  function startSparkles() {
+    sparkleContainer.style.display = "block";
+    sparkleInterval = setInterval(createSparkle, 200);
+  }
+
+  function showFinalMessage() {
+    finalMessage.style.opacity = 1;
+  }
+
+  // Optional: Pause music and sparkles if tab hidden
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      music.pause();
+      clearInterval(sparkleInterval);
+    } else {
+      if (current >= screens.length) {
+        music.play();
+        sparkleInterval = setInterval(createSparkle, 200);
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
